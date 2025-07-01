@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => require config_path('timezone.php'),
 
     /*
     |--------------------------------------------------------------------------
