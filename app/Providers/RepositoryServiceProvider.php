@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\SystemSetting\SystemSettingInterface;
 use App\Repositories\SystemSetting\SystemSettingRepository;
+use App\Repositories\ProfileSetting\ProfileSettingInterface;
+use App\Repositories\ProfileSetting\ProfileSettingRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SystemSettingInterface::class,
             SystemSettingRepository::class,
+        );
+
+        // Profile Setting Repositroy
+        $this->app->bind(
+            ProfileSettingInterface::class,
+            ProfileSettingRepository::class,
         );
     }
 
