@@ -19,6 +19,6 @@ class Module extends Model
 
     // Relationship
     public function permissions() : HasMany {
-        return $this->hasMany(Module::class);
+        return $this->hasMany(Module::class, 'id');
     }
 }
