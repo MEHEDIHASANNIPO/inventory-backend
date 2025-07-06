@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\SystemSettingController;
 use App\Http\Controllers\Api\ProfileSettingController;
@@ -22,4 +23,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/profile-info', [ProfileSettingController::class, 'profileInfo']);
     Route::post('/update-profile', [ProfileSettingController::class, 'updateProfile']);
     Route::post('/update-password', [ProfileSettingController::class, 'updatePassword']);
+
+    // Module Routes
+    Route::apiResource('/modules', ModuleController::class);
+    Route::get('/all-modules', [ModuleController::class, 'allModules']);
 });
