@@ -21,7 +21,7 @@ class PermissionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function allModules()
+    public function allPermissions()
     {
         $data = $this->permissionRepository->all();
         $metadata['count'] = count($data);
