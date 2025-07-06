@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
+use App\Repositories\Permission\PermissionInterface;
+use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\SystemSetting\SystemSettingInterface;
 use App\Repositories\SystemSetting\SystemSettingRepository;
 use App\Repositories\ProfileSetting\ProfileSettingInterface;
@@ -33,6 +35,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ModuleInterface::class,
             ModuleRepository::class,
+        );
+
+        // Permission Repositroy
+        $this->app->bind(
+            PermissionInterface::class,
+            PermissionRepository::class,
         );
     }
 
