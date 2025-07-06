@@ -12,7 +12,8 @@ class ModuleRepository implements ModuleInterface
      */
 
     public function all() {
-        $data = Module::latest('id')
+        $data = Module::with('permissions')
+        ->latest('id')
         ->select(['id', 'module_name', 'module_slug', 'updated_at'])
         ->get();
 
@@ -24,7 +25,8 @@ class ModuleRepository implements ModuleInterface
      */
 
     public function allPaginate($perPage) {
-        $data = Module::latest('id')
+        $data = Module::with('permissions')
+        ->latest('id')
         ->when(request('search'), function($query) {
             $query->where('module_name', 'like', '%' . request('search') . '%');
         })
@@ -54,7 +56,7 @@ class ModuleRepository implements ModuleInterface
      */
 
     public function show($id) {
-        return Module::findOrFail($id);
+        return Module::with('permissions')->findOrFail($id);
     }
 
     /*
