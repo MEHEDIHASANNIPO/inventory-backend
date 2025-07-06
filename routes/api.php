@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\PermissionController;
@@ -32,4 +33,8 @@ Route::middleware('auth:sanctum')->group(function() {
     // Permission Routes
     Route::apiResource('/permissions', PermissionController::class);
     Route::get('/all-permissions', [PermissionController::class, 'allPermissions']);
+
+    // Role Routes
+    Route::apiResource('/roles', RoleController::class);
+    Route::get('/all-roles', [RoleController::class, 'allRoles']);
 });
