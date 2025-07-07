@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Trait\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreModuleRequest;
 use App\Http\Requests\UpdateModuleRequest;
 use App\Repositories\Module\ModuleInterface;
@@ -38,6 +39,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('index-module');
+
         $perPage = request('per_page');
         $data = $this->moduleRepository->allPaginate($perPage);
         $metadata['count'] = count($data);
@@ -53,6 +56,8 @@ class ModuleController extends Controller
      */
     public function store(StoreModuleRequest $request)
     {
+        Gate::authorize('create-module');
+
         $data = $this->moduleRepository->store($request);
 
         try {
@@ -80,6 +85,8 @@ class ModuleController extends Controller
      */
     public function update(UpdateModuleRequest $request, string $id)
     {
+        Gate::authorize('edit-module');
+
         $data = $this->moduleRepository->update($request, $id);
 
         try {
@@ -94,6 +101,8 @@ class ModuleController extends Controller
      */
     public function destroy(string $id)
     {
+        Gate::authorize('delete-module');
+
         $data = $this->moduleRepository->delete($id);
 
         try {

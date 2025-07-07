@@ -6,6 +6,7 @@ use App\Trait\ApiResponse;
 use Illuminate\Http\Request;
 use App\Enums\PasswordUpdateStatus;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Resources\ProfileSettingResource;
@@ -33,6 +34,8 @@ class ProfileSettingController extends Controller
 
     // Update Profile
     public function updateProfile(UpdateProfileRequest $request) {
+        Gate::authorize('update-profile');
+
         $data = $this->profileSettingRepository->updateProfile($request);
 
         try {
@@ -44,8 +47,10 @@ class ProfileSettingController extends Controller
 
     // Update Password
     public function updatePassword(UpdatePasswordRequest $request) {
+        Gate::authorize('change-password');
+
         $data = $this->profileSettingRepository->updatePassword($request);
-        
+
         try {
             if($data == PasswordUpdateStatus::UPDATED) {
                 return $this->ResponseSuccess([], null, 'Password Updated');
@@ -54,6 +59,17 @@ class ProfileSettingController extends Controller
             } elseif ($data == PasswordUpdateStatus::OLD_PASSWORD_MISMATCH) {
                 return $this->ResponseError([], null, "Old Password Didn't Matched!");
             }
+        } catch (\Throwable $th) {
+            return $this->ResponseError($th->getMessage());
+        }
+    }
+
+    // User Permissions
+    public function userPermissions() {
+        $data = $this->profileSettingRepository->userPermissions();
+
+        try {
+            return $this->ResponseSuccess($data, null, 'Permission Fetched');
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
         }

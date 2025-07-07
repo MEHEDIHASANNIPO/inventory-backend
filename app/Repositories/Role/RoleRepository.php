@@ -53,7 +53,7 @@ class RoleRepository implements RoleInterface
      * @return mixed|void
      */
     public function show($id) {
-        return Role::with('permissions:id,permission_name')->findOrFail($id);
+        return Role::with('permissions:id,permission_name,permission_slug')->findOrFail($id);
     }
 
     /*

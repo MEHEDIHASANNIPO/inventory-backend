@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Trait\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\UpdateSystemSettingRequest;
 use App\Repositories\SystemSetting\SystemSettingInterface;
 
@@ -65,6 +66,8 @@ class SystemSettingController extends Controller
      */
     public function update(UpdateSystemSettingRequest $request, $id)
     {
+        Gate::authorize('general-setting');
+        
         $data = $this->systemSettingRepository->update($request, $id);
 
         try {

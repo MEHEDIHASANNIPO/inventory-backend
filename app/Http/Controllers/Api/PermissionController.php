@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Trait\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 use App\Repositories\Permission\PermissionInterface;
@@ -37,6 +38,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        Gate::authorize('index-permission');
+
         $perPage = request('per_page');
         $data = $this->permissionRepository->allPaginate($perPage);
         $metadata['count'] = count($data);
@@ -52,6 +55,8 @@ class PermissionController extends Controller
      */
     public function store(StorePermissionRequest $request)
     {
+        Gate::authorize('create-permission');
+
         $data = $this->permissionRepository->store($request);
 
         try {
@@ -79,6 +84,8 @@ class PermissionController extends Controller
      */
     public function update(UpdatePermissionRequest $request, string $id)
     {
+        Gate::authorize('edit-permission');
+
         $data = $this->permissionRepository->update($request, $id);
 
         try {
@@ -93,6 +100,8 @@ class PermissionController extends Controller
      */
     public function destroy(string $id)
     {
+        Gate::authorize('delete-permission');
+
         $data = $this->permissionRepository->delete($id);
 
         try {

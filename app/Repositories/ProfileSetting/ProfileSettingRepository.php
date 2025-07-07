@@ -67,4 +67,15 @@ class ProfileSettingRepository implements ProfileSettingInterface
             return PasswordUpdateStatus::OLD_PASSWORD_MISMATCH;
         }
     }
+
+    /*
+     * @return mixed|void
+     */
+    public function userPermissions() {
+        $data = Auth::user();
+
+        $permissions = $data->role->permissions->pluck('permission_slug');
+
+        return $permissions;
+    }
 }

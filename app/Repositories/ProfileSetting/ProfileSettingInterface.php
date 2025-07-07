@@ -7,4 +7,5 @@ interface ProfileSettingInterface
     public function profileInfo();
     public function updateProfile($data);
     public function updatePassword($data);
+    public function userPermissions();
 }
