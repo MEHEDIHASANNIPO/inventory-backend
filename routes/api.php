@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
+use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\CategoryController;
@@ -48,4 +49,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/categories', CategoryController::class);
     Route::get('/all-categories', [CategoryController::class, 'allCategories']);
     Route::get('/category/status/{id}', [CategoryController::class, 'status']);
+
+    // Brand Routes
+    Route::apiResource('/brands', BrandController::class);
+    Route::get('/all-brands', [BrandController::class, 'allBrands']);
+    Route::get('/brand/status/{id}', [BrandController::class, 'status']);
 });

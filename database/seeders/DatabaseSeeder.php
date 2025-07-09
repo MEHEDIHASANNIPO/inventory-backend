@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\AdminSeeder;
+use Database\Seeders\BrandSeeder;
 use Database\Seeders\ModuleSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\SystemSettingSeeder;
@@ -30,7 +31,8 @@ class DatabaseSeeder extends Seeder
             SystemSettingSeeder::class,
             ModuleSeeder::class,
             RoleSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            BrandSeeder::class
         ]);
     }
 }

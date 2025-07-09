@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
+use App\Repositories\Brand\BrandInterface;
+use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
 use App\Repositories\Category\CategoryInterface;
@@ -58,6 +61,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CategoryInterface::class,
             CategoryRepository::class,
+        );
+
+        // Brand Repositroy
+        $this->app->bind(
+            BrandInterface::class,
+            BrandRepository::class,
         );
     }
 
