@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\AdminSeeder;
 use Database\Seeders\ModuleSeeder;
+use Database\Seeders\CategorySeeder;
 use Database\Seeders\SystemSettingSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,7 +29,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SystemSettingSeeder::class,
             ModuleSeeder::class,
-            RoleSeeder::class
+            RoleSeeder::class,
+            CategorySeeder::class
         ]);
     }
 }

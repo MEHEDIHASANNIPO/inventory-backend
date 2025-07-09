@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\SystemSettingController;
 use App\Http\Controllers\Api\ProfileSettingController;
@@ -42,4 +43,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     // Role Routes
     Route::apiResource('/roles', RoleController::class);
     Route::get('/all-roles', [RoleController::class, 'allRoles']);
+
+    // Category Routes
+    Route::apiResource('/categories', CategoryController::class);
+    Route::get('/all-categories', [CategoryController::class, 'allCategories']);
+    Route::get('/category/status/{id}', [CategoryController::class, 'status']);
 });

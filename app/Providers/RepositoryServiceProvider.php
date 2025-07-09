@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
+use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Permission\PermissionInterface;
 use App\Repositories\Permission\PermissionRepository;
 use App\Repositories\SystemSetting\SystemSettingInterface;
@@ -49,6 +52,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             RoleInterface::class,
             RoleRepository::class,
+        );
+
+        // Category Repositroy
+        $this->app->bind(
+            CategoryInterface::class,
+            CategoryRepository::class,
         );
     }
 
