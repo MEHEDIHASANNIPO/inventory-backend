@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\WareHouseController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\SystemSettingController;
 use App\Http\Controllers\Api\ProfileSettingController;
@@ -54,4 +55,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/brands', BrandController::class);
     Route::get('/all-brands', [BrandController::class, 'allBrands']);
     Route::get('/brand/status/{id}', [BrandController::class, 'status']);
+
+    // WareHouse Routes
+    Route::apiResource('/warehouses', WareHouseController::class);
+    Route::get('/all-warehouses', [WareHouseController::class, 'allWareHouses']);
+    Route::get('/warehouse/status/{id}', [WareHouseController::class, 'status']);
 });
