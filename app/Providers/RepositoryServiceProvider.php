@@ -12,7 +12,9 @@ use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
 use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Supplier\SupplierInterface;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Supplier\SupplierRepository;
 use App\Repositories\WareHouse\WareHouseInterface;
 use App\Repositories\WareHouse\WareHouseRepository;
 use App\Repositories\Permission\PermissionInterface;
@@ -75,6 +77,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             WareHouseInterface::class,
             WareHouseRepository::class,
+        );
+
+        // Supplier Repositroy
+        $this->app->bind(
+            SupplierInterface::class,
+            SupplierRepository::class,
         );
     }
 

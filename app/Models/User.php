@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
+use App\Enums\UserRole;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -62,5 +63,22 @@ class User extends Authenticatable
 
     public function hasPermission($permission_slug) {
         return $this->role->permissions->where('permission_slug', $permission_slug)->first() ? true : false;
+    }
+
+    // Roles
+    public function scopeAdmin() {
+        return $this->where(['role_id' => UserRole::ADMIN]);
+    }
+    public function scopeManager() {
+        return $this->where(['role_id' => UserRole::MANAGER]);
+    }
+    public function scopeStaff() {
+        return $this->where(['role_id' => UserRole::STAFF]);
+    }
+    public function scopeSupplier() {
+        return $this->where(['role_id' => UserRole::SUPPLIER]);
+    }
+    public function scopeCustomer() {
+        return $this->where(['role_id' => UserRole::CUSTOMER]);
     }
 }

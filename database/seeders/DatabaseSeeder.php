@@ -10,6 +10,7 @@ use Database\Seeders\AdminSeeder;
 use Database\Seeders\BrandSeeder;
 use Database\Seeders\ModuleSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\SupplierSeeder;
 use Database\Seeders\WareHouseSeeder;
 use Database\Seeders\SystemSettingSeeder;
 
@@ -34,7 +35,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             CategorySeeder::class,
             BrandSeeder::class,
-            WareHouseSeeder::class
+            WareHouseSeeder::class,
+            SupplierSeeder::class
         ]);
     }
 }
