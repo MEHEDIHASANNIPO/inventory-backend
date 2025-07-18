@@ -11,6 +11,8 @@ use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
+use App\Repositories\Product\ProductInterface;
+use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Supplier\SupplierInterface;
 use App\Repositories\Category\CategoryRepository;
@@ -83,6 +85,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SupplierInterface::class,
             SupplierRepository::class,
+        );
+
+        // Product Repositroy
+        $this->app->bind(
+            ProductInterface::class,
+            ProductRepository::class,
         );
     }
 
