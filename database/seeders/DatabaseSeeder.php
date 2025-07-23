@@ -13,6 +13,7 @@ use Database\Seeders\CategorySeeder;
 use Database\Seeders\SupplierSeeder;
 use Database\Seeders\WareHouseSeeder;
 use Database\Seeders\SystemSettingSeeder;
+use Database\Seeders\ExpenseCategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -36,7 +37,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BrandSeeder::class,
             WareHouseSeeder::class,
-            SupplierSeeder::class
+            SupplierSeeder::class,
+            ExpenseCategorySeeder::class
         ]);
     }
 }

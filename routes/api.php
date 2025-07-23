@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\WareHouseController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\SystemSettingController;
 use App\Http\Controllers\Api\ProfileSettingController;
+use App\Http\Controllers\Api\ExpenseCategoryController;
 
 // Login Route
 Route::post('/login', LoginController::class);
@@ -72,4 +73,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/products', ProductController::class);
     Route::get('/all-products', [ProductController::class, 'allProducts']);
     Route::get('/product/status/{id}', [ProductController::class, 'status']);
+
+    // Expense Category Routes
+    Route::apiResource('/expense-categories', ExpenseCategoryController::class);
+    Route::get('/all-expense-categories', [ExpenseCategoryController::class, 'allExpenseCategories']);
+    Route::get('/expense-category/status/{id}', [ExpenseCategoryController::class, 'status']);
 });

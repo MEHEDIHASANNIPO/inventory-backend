@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\ExpenseCategory;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
@@ -25,6 +26,8 @@ use App\Repositories\SystemSetting\SystemSettingInterface;
 use App\Repositories\SystemSetting\SystemSettingRepository;
 use App\Repositories\ProfileSetting\ProfileSettingInterface;
 use App\Repositories\ProfileSetting\ProfileSettingRepository;
+use App\Repositories\ExpenseCategory\ExpenseCategoryInterface;
+use App\Repositories\ExpenseCategory\ExpenseCategoryRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -91,6 +94,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ProductInterface::class,
             ProductRepository::class,
+        );
+
+        // Expense Category Repositroy
+        $this->app->bind(
+            ExpenseCategoryInterface::class,
+            ExpenseCategoryRepository::class,
         );
     }
 
