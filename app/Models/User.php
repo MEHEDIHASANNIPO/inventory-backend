@@ -72,8 +72,8 @@ class User extends Authenticatable
     public function scopeManager() {
         return $this->where(['role_id' => UserRole::MANAGER]);
     }
-    public function scopeStaff() {
-        return $this->where(['role_id' => UserRole::STAFF]);
+    public function scopeEmployee() {
+        return $this->where(['role_id' => UserRole::EMPLOYEE]);
     }
     public function scopeSupplier() {
         return $this->where(['role_id' => UserRole::SUPPLIER]);
