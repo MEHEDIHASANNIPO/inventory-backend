@@ -9,7 +9,9 @@ use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Module\ModuleRepository;
+use App\Repositories\Expense\ExpenseInterface;
 use App\Repositories\Product\ProductInterface;
+use App\Repositories\Expense\ExpenseRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Employee\EmployeeInterface;
@@ -99,6 +101,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             ExpenseCategoryInterface::class,
             ExpenseCategoryRepository::class,
+        );
+
+        // Expense Repositroy
+        $this->app->bind(
+            ExpenseInterface::class,
+            ExpenseRepository::class,
         );
 
         // Employee Repositroy

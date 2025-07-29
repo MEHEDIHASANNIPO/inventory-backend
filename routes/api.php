@@ -7,6 +7,7 @@ use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\EmployeeController;
@@ -79,6 +80,11 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/expense-categories', ExpenseCategoryController::class);
     Route::get('/all-expense-categories', [ExpenseCategoryController::class, 'allExpenseCategories']);
     Route::get('/expense-category/status/{id}', [ExpenseCategoryController::class, 'status']);
+
+    // Expense Routes
+    Route::apiResource('/expenses', ExpenseController::class);
+    Route::get('/all-expenses', [ExpenseController::class, 'allExpenses']);
+    Route::get('/expense/status/{id}', [ExpenseController::class, 'status']);
 
     // Employee Routes
     Route::apiResource('/employees', EmployeeController::class);
