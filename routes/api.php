@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\ProductController;
@@ -90,4 +91,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/employees', EmployeeController::class);
     Route::get('/all-employees', [EmployeeController::class, 'allEmployees']);
     Route::get('/employee/status/{id}', [EmployeeController::class, 'status']);
+
+    // Salary Routes
+    Route::apiResource('/salaries', SalaryController::class);
+    Route::get('/all-salaries', [SalaryController::class, 'allSalaries']);
+    Route::get('/salary/status/{id}', [SalaryController::class, 'status']);
 });

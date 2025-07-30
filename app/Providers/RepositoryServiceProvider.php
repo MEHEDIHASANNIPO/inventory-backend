@@ -2,13 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\Salary;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Role\RoleInterface;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Module\ModuleInterface;
+use App\Repositories\Salary\SalaryInterface;
 use App\Repositories\Module\ModuleRepository;
+use App\Repositories\Salary\SalaryRepository;
 use App\Repositories\Expense\ExpenseInterface;
 use App\Repositories\Product\ProductInterface;
 use App\Repositories\Expense\ExpenseRepository;
@@ -113,6 +116,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             EmployeeInterface::class,
             EmployeeRepository::class,
+        );
+
+        // Salary Repositroy
+        $this->app->bind(
+            SalaryInterface::class,
+            SalaryRepository::class,
         );
     }
 
