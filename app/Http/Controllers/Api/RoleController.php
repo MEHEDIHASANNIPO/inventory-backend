@@ -57,9 +57,8 @@ class RoleController extends Controller
     {
         Gate::authorize('create-role');
 
-        $data = $this->roleRepository->store($request);
-
         try {
+            $data = $this->roleRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class RoleController extends Controller
     {
         Gate::authorize('edit-role');
 
-        $data = $this->roleRepository->update($request, $id);
-
         try {
+            $data = $this->roleRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class RoleController extends Controller
     {
         Gate::authorize('delete-role');
 
-        $data = $this->roleRepository->delete($id);
-
         try {
+            $data = $this->roleRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

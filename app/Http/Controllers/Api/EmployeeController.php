@@ -57,9 +57,8 @@ class EmployeeController extends Controller
     {
         Gate::authorize('create-employee');
 
-        $data = $this->employeeRepository->store($request);
-
         try {
+            $data = $this->employeeRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class EmployeeController extends Controller
     {
         Gate::authorize('edit-employee');
 
-        $data = $this->employeeRepository->update($request, $id);
-
         try {
+            $data = $this->employeeRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class EmployeeController extends Controller
     {
         Gate::authorize('delete-employee');
 
-        $data = $this->employeeRepository->delete($id);
-
         try {
+            $data = $this->employeeRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -118,9 +115,8 @@ class EmployeeController extends Controller
     {
         Gate::authorize('edit-employee');
 
-        $data = $this->employeeRepository->status($id);
-
         try {
+            $data = $this->employeeRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

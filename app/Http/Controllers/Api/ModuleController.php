@@ -58,9 +58,8 @@ class ModuleController extends Controller
     {
         Gate::authorize('create-module');
 
-        $data = $this->moduleRepository->store($request);
-
         try {
+            $data = $this->moduleRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -87,9 +86,8 @@ class ModuleController extends Controller
     {
         Gate::authorize('edit-module');
 
-        $data = $this->moduleRepository->update($request, $id);
-
         try {
+            $data = $this->moduleRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -103,9 +101,8 @@ class ModuleController extends Controller
     {
         Gate::authorize('delete-module');
 
-        $data = $this->moduleRepository->delete($id);
-
         try {
+            $data = $this->moduleRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

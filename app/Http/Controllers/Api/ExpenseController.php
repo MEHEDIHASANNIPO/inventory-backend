@@ -57,9 +57,8 @@ class ExpenseController extends Controller
     {
         Gate::authorize('create-expense');
 
-        $data = $this->expenseRepository->store($request);
-
         try {
+            $data = $this->expenseRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class ExpenseController extends Controller
     {
         Gate::authorize('edit-expense');
 
-        $data = $this->expenseRepository->update($request, $id);
-
         try {
+            $data = $this->expenseRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

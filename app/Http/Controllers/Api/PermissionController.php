@@ -57,9 +57,8 @@ class PermissionController extends Controller
     {
         Gate::authorize('create-permission');
 
-        $data = $this->permissionRepository->store($request);
-
         try {
+            $data = $this->permissionRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class PermissionController extends Controller
     {
         Gate::authorize('edit-permission');
 
-        $data = $this->permissionRepository->update($request, $id);
-
         try {
+            $data = $this->permissionRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class PermissionController extends Controller
     {
         Gate::authorize('delete-permission');
 
-        $data = $this->permissionRepository->delete($id);
-
         try {
+            $data = $this->permissionRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

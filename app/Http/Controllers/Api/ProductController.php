@@ -59,9 +59,8 @@ class ProductController extends Controller
     {
         Gate::authorize('create-product');
 
-        $data = $this->productRepository->store($request);
-
         try {
+            $data = $this->productRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -89,9 +88,8 @@ class ProductController extends Controller
     {
         Gate::authorize('edit-product');
 
-        $data = $this->productRepository->update($request, $id);
-
         try {
+            $data = $this->productRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -105,9 +103,8 @@ class ProductController extends Controller
     {
         Gate::authorize('delete-product');
 
-        $data = $this->productRepository->delete($id);
-
         try {
+            $data = $this->productRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -121,9 +118,8 @@ class ProductController extends Controller
     {
         Gate::authorize('edit-product');
 
-        $data = $this->productRepository->status($id);
-
         try {
+            $data = $this->productRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

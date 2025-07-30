@@ -36,9 +36,8 @@ class ProfileSettingController extends Controller
     public function updateProfile(UpdateProfileRequest $request) {
         Gate::authorize('update-profile');
 
-        $data = $this->profileSettingRepository->updateProfile($request);
-
         try {
+            $data = $this->profileSettingRepository->updateProfile($request);
             return $this->ResponseSuccess(new ProfileSettingResource($data), null, 'Profile Updated');
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -49,9 +48,9 @@ class ProfileSettingController extends Controller
     public function updatePassword(UpdatePasswordRequest $request) {
         Gate::authorize('change-password');
 
-        $data = $this->profileSettingRepository->updatePassword($request);
-
         try {
+            $data = $this->profileSettingRepository->updatePassword($request);
+
             if($data == PasswordUpdateStatus::UPDATED) {
                 return $this->ResponseSuccess([], null, 'Password Updated');
             } elseif ($data == PasswordUpdateStatus::SAME_AS_OLD) {
@@ -66,9 +65,8 @@ class ProfileSettingController extends Controller
 
     // User Permissions
     public function userPermissions() {
-        $data = $this->profileSettingRepository->userPermissions();
-
         try {
+            $data = $this->profileSettingRepository->userPermissions();
             return $this->ResponseSuccess($data, null, 'Permission Fetched');
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

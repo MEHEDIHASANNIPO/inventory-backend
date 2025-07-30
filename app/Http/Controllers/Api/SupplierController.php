@@ -57,9 +57,8 @@ class SupplierController extends Controller
     {
         Gate::authorize('create-supplier');
 
-        $data = $this->supplierRepository->store($request);
-
         try {
+            $data = $this->supplierRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class SupplierController extends Controller
     {
         Gate::authorize('edit-supplier');
 
-        $data = $this->supplierRepository->update($request, $id);
-
         try {
+            $data = $this->supplierRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class SupplierController extends Controller
     {
         Gate::authorize('delete-supplier');
 
-        $data = $this->supplierRepository->delete($id);
-
         try {
+            $data = $this->supplierRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -118,9 +115,8 @@ class SupplierController extends Controller
     {
         Gate::authorize('edit-supplier');
 
-        $data = $this->supplierRepository->status($id);
-
         try {
+            $data = $this->supplierRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

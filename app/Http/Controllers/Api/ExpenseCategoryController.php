@@ -57,9 +57,8 @@ class ExpenseCategoryController extends Controller
     {
         Gate::authorize('create-expense-category');
 
-        $data = $this->expenseCategoryRepository->store($request);
-
         try {
+            $data = $this->expenseCategoryRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class ExpenseCategoryController extends Controller
     {
         Gate::authorize('edit-expense-category');
 
-        $data = $this->expenseCategoryRepository->update($request, $id);
-
         try {
+            $data = $this->expenseCategoryRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class ExpenseCategoryController extends Controller
     {
         Gate::authorize('delete-expense-category');
 
-        $data = $this->expenseCategoryRepository->delete($id);
-
         try {
+            $data = $this->expenseCategoryRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -118,9 +115,8 @@ class ExpenseCategoryController extends Controller
     {
         Gate::authorize('edit-expense-category');
 
-        $data = $this->expenseCategoryRepository->status($id);
-
         try {
+            $data = $this->expenseCategoryRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

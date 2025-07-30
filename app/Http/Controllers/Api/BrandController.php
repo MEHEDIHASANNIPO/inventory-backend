@@ -57,9 +57,8 @@ class BrandController extends Controller
     {
         Gate::authorize('create-brand');
 
-        $data = $this->brandRepository->store($request);
-
         try {
+            $data = $this->brandRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class BrandController extends Controller
     {
         Gate::authorize('edit-brand');
 
-        $data = $this->brandRepository->update($request, $id);
-
         try {
+            $data = $this->brandRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class BrandController extends Controller
     {
         Gate::authorize('delete-brand');
 
-        $data = $this->brandRepository->delete($id);
-
         try {
+            $data = $this->brandRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -118,9 +115,8 @@ class BrandController extends Controller
     {
         Gate::authorize('edit-brand');
 
-        $data = $this->brandRepository->status($id);
-
         try {
+            $data = $this->brandRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

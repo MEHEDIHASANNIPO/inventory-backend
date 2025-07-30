@@ -57,9 +57,8 @@ class WareHouseController extends Controller
     {
         Gate::authorize('create-warehouse');
 
-        $data = $this->wareHouseRepository->store($request);
-
         try {
+            $data = $this->wareHouseRepository->store($request);
             return $this->ResponseSuccess($data, null, 'Data Stored Successfully!', 201);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -86,9 +85,8 @@ class WareHouseController extends Controller
     {
         Gate::authorize('edit-warehouse');
 
-        $data = $this->wareHouseRepository->update($request, $id);
-
         try {
+            $data = $this->wareHouseRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Data Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -102,9 +100,8 @@ class WareHouseController extends Controller
     {
         Gate::authorize('delete-warehouse');
 
-        $data = $this->wareHouseRepository->delete($id);
-
         try {
+            $data = $this->wareHouseRepository->delete($id);
             return $this->ResponseSuccess($data, null, 'Data Deleted Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());
@@ -118,9 +115,8 @@ class WareHouseController extends Controller
     {
         Gate::authorize('edit-warehouse');
 
-        $data = $this->wareHouseRepository->status($id);
-
         try {
+            $data = $this->wareHouseRepository->status($id);
             return $this->ResponseSuccess($data, null, 'Status Updated Successfully!', 204);
         } catch (\Throwable $th) {
             return $this->ResponseError($th->getMessage());

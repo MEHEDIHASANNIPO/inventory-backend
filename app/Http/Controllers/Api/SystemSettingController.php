@@ -67,10 +67,9 @@ class SystemSettingController extends Controller
     public function update(UpdateSystemSettingRequest $request, $id)
     {
         Gate::authorize('general-setting');
-        
-        $data = $this->systemSettingRepository->update($request, $id);
 
         try {
+            $data = $this->systemSettingRepository->update($request, $id);
             return $this->ResponseSuccess($data, null, 'Updated Successfully!');
         } catch (\Exception $e) {
             return $this->ResponseError($e->getMessage());
