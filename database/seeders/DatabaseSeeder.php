@@ -10,9 +10,10 @@ use Database\Seeders\AdminSeeder;
 use Database\Seeders\BrandSeeder;
 use Database\Seeders\ModuleSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\CustomerSeeder;
+use Database\Seeders\EmployeeSeeder;
 use Database\Seeders\SupplierSeeder;
 use Database\Seeders\WareHouseSeeder;
-use Database\Seeders\EmployeeSeeder;
 use Database\Seeders\SystemSettingSeeder;
 use Database\Seeders\ExpenseCategorySeeder;
 
@@ -41,6 +42,7 @@ class DatabaseSeeder extends Seeder
             SupplierSeeder::class,
             ExpenseCategorySeeder::class,
             EmployeeSeeder::class,
+            CustomerSeeder::class
         ]);
     }
 }

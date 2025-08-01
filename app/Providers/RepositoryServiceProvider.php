@@ -17,9 +17,11 @@ use App\Repositories\Product\ProductInterface;
 use App\Repositories\Expense\ExpenseRepository;
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Employee\EmployeeInterface;
 use App\Repositories\Supplier\SupplierInterface;
 use App\Repositories\Category\CategoryRepository;
+use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Repositories\Supplier\SupplierRepository;
 use App\Repositories\WareHouse\WareHouseInterface;
@@ -122,6 +124,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             SalaryInterface::class,
             SalaryRepository::class,
+        );
+
+        // Customer Repositroy
+        $this->app->bind(
+            CustomerInterface::class,
+            CustomerRepository::class,
         );
     }
 
