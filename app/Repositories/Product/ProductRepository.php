@@ -29,6 +29,12 @@ class ProductRepository implements ProductInterface
     public function allPaginate($perPage)
     {
         $data = Product::latest('id')
+            ->when(request('category_id'), function($query) {
+                $query->where(['category_id' => request('category_id')]);
+            })
+            ->when(request('brand_id'), function($query) {
+                $query->where(['brand_id' => request('brand_id')]);
+            })
             ->when(request('search'), function ($query) {
                 $query->where('product_name', 'like', '%' . request('search') . '%')
                     ->orWhere('product_code', 'like', '%' . request('search') . '%');

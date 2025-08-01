@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
@@ -102,4 +103,11 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::apiResource('/customers', CustomerController::class);
     Route::get('/all-customers', [CustomerController::class, 'allCustomers']);
     Route::get('/customer/status/{id}', [CustomerController::class, 'status']);
+
+    // Cart Routes
+    Route::get('/all-carts', [CartController::class, 'getCartItems']);
+    Route::post('/add-to-cart', [CartController::class, 'addToCart']);
+    Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart']);
+    Route::get('/increase-cart-item/{id}', [CartController::class, 'increaseQty']);
+    Route::get('/decrease-cart-item/{id}', [CartController::class, 'decreaseQty']);
 });

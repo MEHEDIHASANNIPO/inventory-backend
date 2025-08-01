@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Models\Salary;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Cart\CartInterface;
 use App\Repositories\Role\RoleInterface;
+use App\Repositories\Cart\CartRepository;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Brand\BrandRepository;
@@ -130,6 +132,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CustomerInterface::class,
             CustomerRepository::class,
+        );
+
+        // Cart Repositroy
+        $this->app->bind(
+            CartInterface::class,
+            CartRepository::class,
         );
     }
 
