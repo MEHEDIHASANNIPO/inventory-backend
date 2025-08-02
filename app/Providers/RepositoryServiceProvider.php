@@ -9,7 +9,9 @@ use App\Repositories\Role\RoleInterface;
 use App\Repositories\Cart\CartRepository;
 use App\Repositories\Role\RoleRepository;
 use App\Repositories\Brand\BrandInterface;
+use App\Repositories\Order\OrderInterface;
 use App\Repositories\Brand\BrandRepository;
+use App\Repositories\Order\OrderRepository;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Salary\SalaryInterface;
 use App\Repositories\Module\ModuleRepository;
@@ -138,6 +140,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             CartInterface::class,
             CartRepository::class,
+        );
+
+        // Order Repositroy
+        $this->app->bind(
+            OrderInterface::class,
+            OrderRepository::class,
         );
     }
 

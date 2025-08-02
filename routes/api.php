@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Auth\LoginController;
@@ -85,7 +86,7 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::get('/expense-category/status/{id}', [ExpenseCategoryController::class, 'status']);
 
     // Expense Routes
-    Route::apiResource('/expenses', ExpenseController::class);
+    Route::apiResource('/expenses', ExpenseController::class)->except(['destroy']);
     Route::get('/all-expenses', [ExpenseController::class, 'allExpenses']);
     Route::get('/expense/status/{id}', [ExpenseController::class, 'status']);
 
@@ -110,4 +111,8 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart']);
     Route::get('/increase-cart-item/{id}', [CartController::class, 'increaseQty']);
     Route::get('/decrease-cart-item/{id}', [CartController::class, 'decreaseQty']);
+
+    // Order Routes
+    Route::apiResource('/orders', OrderController::class)->except(['update', 'destroy']);
+    Route::get('/invoice-download/{id}', [OrderController::class, 'invoiceDownload']);
 });
