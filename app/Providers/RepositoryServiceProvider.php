@@ -12,8 +12,11 @@ use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Order\OrderInterface;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Order\OrderRepository;
+use Spatie\Backup\BackupDestination\Backup;
+use App\Repositories\Backup\BackupInterface;
 use App\Repositories\Module\ModuleInterface;
 use App\Repositories\Salary\SalaryInterface;
+use App\Repositories\Backup\BackupRepository;
 use App\Repositories\Module\ModuleRepository;
 use App\Repositories\Salary\SalaryRepository;
 use App\Repositories\Expense\ExpenseInterface;
@@ -146,6 +149,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderInterface::class,
             OrderRepository::class,
+        );
+
+        // Backup Repositroy
+        $this->app->bind(
+            BackupInterface::class,
+            BackupRepository::class,
         );
     }
 

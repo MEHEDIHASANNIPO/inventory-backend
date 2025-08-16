@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\BackupController;
 use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Auth\LoginController;
@@ -115,4 +116,8 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     // Order Routes
     Route::apiResource('/orders', OrderController::class)->except(['update', 'destroy']);
     Route::get('/invoice-download/{id}', [OrderController::class, 'invoiceDownload']);
+
+    // Backup Routes
+    Route::apiResource('/backups', BackupController::class)->except(['show', 'update']);
+    Route::get('/download-backup/{name}', [BackupController::class, 'download']);
 });
