@@ -6,8 +6,10 @@ use App\Models\Salary;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Cart\CartInterface;
 use App\Repositories\Role\RoleInterface;
+use App\Repositories\User\UserInterface;
 use App\Repositories\Cart\CartRepository;
 use App\Repositories\Role\RoleRepository;
+use App\Repositories\user\UserRepository;
 use App\Repositories\Brand\BrandInterface;
 use App\Repositories\Order\OrderInterface;
 use App\Repositories\Brand\BrandRepository;
@@ -155,6 +157,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             BackupInterface::class,
             BackupRepository::class,
+        );
+
+        // User Repositroy
+        $this->app->bind(
+            UserInterface::class,
+            UserRepository::class,
         );
     }
 

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\RoleController;
+use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\AuthGatesMiddleware;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\OrderController;
@@ -120,4 +121,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     // Backup Routes
     Route::apiResource('/backups', BackupController::class)->except(['show', 'update']);
     Route::get('/download-backup/{name}', [BackupController::class, 'download']);
+
+    // User Routes
+    Route::apiResource('/users', UserController::class);
+    Route::get('/all-users', [UserController::class, 'allUsers']);
+    Route::get('/user/status/{id}', [UserController::class, 'status']);
 });

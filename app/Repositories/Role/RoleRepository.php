@@ -3,6 +3,7 @@
 namespace App\Repositories\Role;
 
 use App\Models\Role;
+use App\Enums\UserRole;
 use Illuminate\Support\Str;
 
 class RoleRepository implements RoleInterface
@@ -11,7 +12,8 @@ class RoleRepository implements RoleInterface
      * @return mixed|void
      */
     public function all() {
-        $data = Role::with('permissions:id,permission_name')
+        $data = Role::whereNotIn('id', [UserRole::ADMIN, UserRole::EMPLOYEE, UserRole::SUPPLIER, UserRole::CUSTOMER])
+        ->with('permissions:id,permission_name')
         ->select(['id', 'role_name', 'role_slug', 'role_note', 'is_deleteable', 'updated_at'])
         ->get();
 
