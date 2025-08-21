@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Salary;
+use App\Models\Transfer;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Cart\CartInterface;
 use App\Repositories\Role\RoleInterface;
@@ -29,10 +30,12 @@ use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Customer\CustomerInterface;
 use App\Repositories\Employee\EmployeeInterface;
 use App\Repositories\Supplier\SupplierInterface;
+use App\Repositories\Transfer\TransferInterface;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Customer\CustomerRepository;
 use App\Repositories\Employee\EmployeeRepository;
 use App\Repositories\Supplier\SupplierRepository;
+use App\Repositories\Transfer\TransferRepository;
 use App\Repositories\WareHouse\WareHouseInterface;
 use App\Repositories\WareHouse\WareHouseRepository;
 use App\Repositories\Permission\PermissionInterface;
@@ -151,6 +154,12 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             OrderInterface::class,
             OrderRepository::class,
+        );
+
+        // Transfer Repositroy
+        $this->app->bind(
+            TransferInterface::class,
+            TransferRepository::class,
         );
 
         // Backup Repositroy

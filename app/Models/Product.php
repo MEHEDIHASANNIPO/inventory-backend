@@ -31,6 +31,6 @@ class Product extends Model
         return $this->belongsTo(Supplier::class, 'user_id');
     }
     public function warehouse() : BelongsTo {
-        return $this->belongsTo(WareHouse::class);
+        return $this->belongsTo(WareHouse::class, 'warehouse_id');
     }
 }

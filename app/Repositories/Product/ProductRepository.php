@@ -16,8 +16,9 @@ class ProductRepository implements ProductInterface
      */
     public function all()
     {
-        $data = Product::latest('id')
-            ->select(['id', 'product_name', 'product_code', 'original_price', 'sell_price', 'stock', 'file', 'qrcode', 'is_active', 'updated_at'])
+        $data = Product::with('warehouse')
+            ->latest('id')
+            ->select(['id', 'warehouse_id', 'product_name', 'product_code', 'original_price', 'sell_price', 'stock', 'file', 'qrcode', 'is_active', 'updated_at'])
             ->get();
 
         return $data;
@@ -28,7 +29,8 @@ class ProductRepository implements ProductInterface
      */
     public function allPaginate($perPage)
     {
-        $data = Product::latest('id')
+        $data = Product::with('warehouse')
+            ->latest('id')
             ->when(request('category_id'), function($query) {
                 $query->where(['category_id' => request('category_id')]);
             })
@@ -39,7 +41,7 @@ class ProductRepository implements ProductInterface
                 $query->where('product_name', 'like', '%' . request('search') . '%')
                     ->orWhere('product_code', 'like', '%' . request('search') . '%');
             })
-            ->select(['id', 'product_name', 'product_code', 'original_price', 'sell_price', 'stock', 'file', 'qrcode', 'is_active', 'updated_at'])
+            ->select(['id', 'warehouse_id', 'product_name', 'product_code', 'original_price', 'sell_price', 'stock', 'file', 'qrcode', 'is_active', 'updated_at'])
             ->paginate($perPage);
 
         return $data;

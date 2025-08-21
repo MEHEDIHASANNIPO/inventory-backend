@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\SupplierController;
+use App\Http\Controllers\Api\TransferController;
 use App\Http\Controllers\Api\WareHouseController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\SystemSettingController;
@@ -117,6 +118,9 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     // Order Routes
     Route::apiResource('/orders', OrderController::class)->except(['update', 'destroy']);
     Route::get('/invoice-download/{id}', [OrderController::class, 'invoiceDownload']);
+
+    // Transfer Routes
+    Route::apiResource('/transfers', TransferController::class)->except(['update']);
 
     // Backup Routes
     Route::apiResource('/backups', BackupController::class)->except(['show', 'update']);
