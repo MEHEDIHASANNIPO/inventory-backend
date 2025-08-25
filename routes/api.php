@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\TransferController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\WareHouseController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\SystemSettingController;
@@ -35,6 +36,10 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+
+    // Dashboard Routes
+    Route::get('/get-notifications', [DashboardController::class, 'getNotifications']);
+    Route::get('/mark-as-readall', [DashboardController::class, 'marAsReadAll']);
 
     // System Setting Routes
     Route::put('/system-setting/{id}', [SystemSettingController::class, 'update']);
