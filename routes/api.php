@@ -38,6 +38,7 @@ Route::middleware(['auth:sanctum', AuthGatesMiddleware::class])->group(function(
     });
 
     // Dashboard Routes
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('/get-notifications', [DashboardController::class, 'getNotifications']);
     Route::get('/mark-as-readall', [DashboardController::class, 'marAsReadAll']);
 
