@@ -1,3 +1,19 @@
+# MHN Inventory
+
+MHN Inventory is a **powerful and modern inventory management system** built with **Laravel, Vue.js, Pinia, Tailwind CSS, and REST API**.  
+It’s designed as a **Single Page Application (SPA)** with real-time updates, smooth performance, and a clean user experience.  
+
+✨ **Key Highlights**  
+- 🚀 Fast and responsive SPA  
+- 🔄 Real-time data updates with Pinia state management  
+- 🎨 Modern UI with Tailwind CSS  
+- 🔌 REST API powered backend  
+- 📊 Feature-rich inventory, pos & management system  
+- 🔐 Secure, scalable, and reliable  
+- ⚡ Amazing performance with Laravel + Vue stack  
+
+🔗 **Live Demo:** [https://mhninventory.mehedihasannipo.com/](https://mhninventory.mehedihasannipo.com/)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
